@@ -1,0 +1,14 @@
+#!/bin/sh
+
+ENABLED=$(git config --bool hooks.gitleaks)
+if [ "$ENABLED" != "true" ]; then
+  echo "gitleaks pre-commit hook disabled. Skipping..."
+  exit 0
+fi
+
+HOST_PATH=$(pwd)
+docker run --rm -v $HOST_PATH:/repo zricethezav/gitleaks:latest detect --source /repo --no-banner
+if [ $? -ne 0 ]; then
+  echo "Commit rejected: secrets detected!"
+  exit 1
+fi
