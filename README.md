@@ -78,7 +78,7 @@ git config hooks.gitleaks true
 1. Create a test file containing a secret:
 
 ```bash
-echo "TELEGRAM_BOT_TOKEN=123456:ABC" > test.txt
+echo "TELEGRAM_BOT_TOKEN=***********" > test.txt
 git add test.txt
 ```
 
