@@ -2,7 +2,7 @@
 
 ENABLED=$(git config --bool hooks.gitleaks)
 if [ "$ENABLED" != "true" ]; then
-  echo "gitleaks pre-commit hook disabled. Skipping..."
+  echo "gitleaks pre-commit hook disabled."
   exit 0
 fi
 
